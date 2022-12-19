@@ -17,39 +17,34 @@ library(dplyr)
 
 # DOWNLOAD DATA
 
-# check if a directory exists, create one if doesn't
-if(!dir.exists("./data")){dir.create("./data")}
-
 # set file URL, file name and file path to download 
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 fileName <- "project_data.zip"
-filePath <- paste0("./data/", fileName)
 
 # download the file
-download.file(fileUrl, destfile = filePath, method = "curl")
+download.file(fileUrl, destfile = fileName, method = "curl")
 
 # unzip the downloaded file
-unzip(zipfile = filePath, exdir = "./data/")
-
+unzip(zipfile = fileName)
 
 
 # READ DATA
 
 # read training data
-training_subject <- read.table('./data/UCI HAR Dataset/train/subject_train.txt', header=FALSE)
-x_train <- read.table('./data/UCI HAR Dataset/train/X_train.txt', header=FALSE)
-y_train <- read.table('./data/UCI HAR Dataset/train/y_train.txt', header=FALSE)
+training_subject <- read.table('./UCI HAR Dataset/train/subject_train.txt', header=FALSE)
+x_train <- read.table('./UCI HAR Dataset/train/X_train.txt', header=FALSE)
+y_train <- read.table('./UCI HAR Dataset/train/y_train.txt', header=FALSE)
 
 # read test data
-test_subject <- read.table('./data/UCI HAR Dataset/test/subject_test.txt', header=FALSE)
-x_test <- read.table('./data/UCI HAR Dataset/test/X_test.txt', header=FALSE)
-y_test <- read.table('./data/UCI HAR Dataset/test/y_test.txt', header=FALSE)
+test_subject <- read.table('./UCI HAR Dataset/test/subject_test.txt', header=FALSE)
+x_test <- read.table('./UCI HAR Dataset/test/X_test.txt', header=FALSE)
+y_test <- read.table('./UCI HAR Dataset/test/y_test.txt', header=FALSE)
 
 # read features data
-features <- read.table('./data/UCI HAR Dataset/features.txt', header=FALSE)
+features <- read.table('./UCI HAR Dataset/features.txt', header=FALSE)
 
 # read activity data
-activity_labels <- read.table('./data/UCI HAR Dataset/activity_labels.txt', header=FALSE)
+activity_labels <- read.table('./UCI HAR Dataset/activity_labels.txt', header=FALSE)
 
 # add column names
 colnames(training_subject) <- "subjectID"
